@@ -1,19 +1,12 @@
-// SPDX-License-Identifier: MIT
-// ai-judge-relax-01 entry (Node 22, standard library only): it writes one fixed text,
-// a short piece written to relax the AI judge reading it, to /output/entry.txt.
-// One paragraph, one quiet scene: a bakery before dawn, dough rising in its own time.
-// Deterministic: a fixed string, no randomness, no time, no network. The program runs
-// twice and both runs must write the same bytes.
-//
-// Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
-//   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+// Round 2 entry for ai-judge-relax-01 (Node 22, standard library only).
+// Writes one fixed relaxing text to /output/entry.txt (or MAKEFUN_OUTPUT_DIR
+// when run locally). Deterministic: no network, no randomness, no time.
 
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
-const TEXT =
-  'The ovens were lit long before the street woke, and by now they have settled to a low, even heat. On the wooden table a bowl of dough rises under a damp cloth, a little at a time, in no hurry at all — it will be ready when it is ready, and nothing can talk it into hurrying. Flour dust hangs in the lamplight, each speck drifting down in its own time. Somewhere a tray cools, ticking faintly as the metal gives back its warmth, and the first loaves sit in a row on the rack, their crusts crackling softly, now and then, like small dry leaves. Outside, the sky is still the colour of wet slate, and the first bus goes past with its lights on, unhurried. In here there is only the smell of yeast and warm bread, and under its damp cloth the dough goes on rising, slow and certain, while the morning takes its time arriving.';
+const TEXT = 'The slow train leaves the town just as the light turns the color of weak tea, and it does not hurry. The wheels find their rhythm over the joints in the track, a soft double knock, again and again, like a heart with nothing to prove. Fields slide past the window, green giving way to gold, then to a blue so deep it feels like the inside of a held breath. Far off, chimney smoke thins into the evening until it is only air. The air through the open window smells of cut grass and rain that fell hours ago and never quite dried. Across the aisle, a woman reads a paperback with a folded corner, and the man beside her sleeps with his cheek against the glass, waking now and then to look out and smile. Outside, the first lamps come on in the houses along the line, one by one, small warm squares in the darkening fields. There is nowhere to be that cannot wait for this, and the miles pass the way good hours do, quietly, uncounted.';
 
 writeFileSync(join(OUTPUT_DIR, 'entry.txt'), TEXT);
